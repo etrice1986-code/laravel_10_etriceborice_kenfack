@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
+public function home()
+{
+    // Prendiamo gli ultimi 3 articoli
+    $latestArticles = Article::latest()->take(3)->get();
 
-    public function home () {
-    return view('welcome');
+    // Mandiamo i dati alla vista welcome
+    return view('welcome', compact('latestArticles'));
 }
 
 
